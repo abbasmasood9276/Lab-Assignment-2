@@ -7,12 +7,15 @@ const Phrase = () => {
   const [showDigits, setShowDigits] = useState('');
 
   const handleCountDigits = () => {
-    const digitCount = (phrase.match(/\d/g) || []).length;
+    const digitCount = (phrase.match(/[0123456789]/g) || []).length;
+  //  const digitCount = (phrase.match(/[0135789]/g) || []).length;
+
     setCountDigits(digitCount);
   };
 
   const handleShowDigits = () => {
-    const digits = (phrase.match(/\d/g) || []).join('');
+    const digits = (phrase.match(/[0123456789]/g) || []).join('');
+  // const digits = (phrase.match(/[0135789]/g) || []).join('');
     setShowDigits(digits);
   };
 
@@ -25,19 +28,23 @@ const Phrase = () => {
             type="text"
             value={phrase}
             onChange={(e) => setPhrase(e.target.value)}
+            placeholder="Enter a phrase"
           />
         </label>
       </div>
       <div className="input-group">
         <label>
           Count Digits:
-          <input type="text" value={countDigits} readOnly />
+          <input type="text" value={countDigits} readOnly
+          placeholder='Count Digits' />
+         
         </label>
       </div>
       <div className="input-group">
         <label>
           Show Digits:
-          <input type="text" value={showDigits} readOnly />
+          <input type="text" value={showDigits} readOnly
+          placeholder='Show Digits' />
         </label>
       </div>
       <div className="button-group">
